@@ -22,7 +22,7 @@ class ValidateLoan(tornado.web.RequestHandler):
             json=json_encode(data))
         return jsonp
 
-    def post(self):
+    def get(self):
         try:
             data = self.request.arguments
             if 'amount' in data:
@@ -42,7 +42,6 @@ class ValidateLoan(tornado.web.RequestHandler):
         except Exception as e:
             res = {'data': e.message, 'status': 500}
             self.write(self.make_response(res))
-    get = post
 
 
 def make_app():
